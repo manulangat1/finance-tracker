@@ -8,4 +8,8 @@ export class EnvironmentDTO {
   @IsNumber()
   @IsNotEmpty()
   port: number;
+
+  @IsString()
+  @IsNotEmpty()
+  secretKey: string;
 }
