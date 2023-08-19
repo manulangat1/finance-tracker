@@ -16,4 +16,10 @@ export class AppConfigService {
   get getSecretKey() {
     return this.configService.getOrThrow('secretKey');
   }
+  get getMaxTries() {
+    return this.configService.getOrThrow('maxLoggingTries');
+  }
+  get getLockPeriod() {
+    return this.configService.getOrThrow('lockedOutPeriod');
+  }
 }

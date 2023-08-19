@@ -2,9 +2,11 @@ import {
   Column,
   Entity,
   Generated,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { LoginCounter } from './LoginCounter.entity';
 
 @Entity()
 export class User {
@@ -28,4 +30,7 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToOne(() => LoginCounter, (loginCounter) => loginCounter.user)
+  loginCounter: LoginCounter;
 }
