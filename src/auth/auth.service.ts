@@ -31,12 +31,10 @@ export class AuthService {
     this.lockedoutPeriod = this.configService.getLockPeriod;
   }
 
-
   async getUser(): Promise<any> {
     const users = await this.userRepository.find();
     return users;
   }
-
 
   async getUserByEmail(email: string): Promise<any> {
     const user = this.userRepository.findOne({
@@ -46,7 +44,6 @@ export class AuthService {
     });
     return user;
   }
-
 
   async login(dto: LoginDTO): Promise<LoginResponse> {
     const { email, password } = dto;
