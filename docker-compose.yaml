@@ -1,11 +1,34 @@
 version: '3'
 services:
-  db:
+  api:
+    build: . 
+    restart: always
+    depends_on:
+      - test-db
+    ports:
+      - "6000:3000"
+    env_file:
+      - .env.test
+    networks:
+      - finance_tracker
+  # dev-db: 
+  #   image: postgres:13
+  #   restart: always
+  #   ports:
+  #     - "5445:5432"
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=123 
+  #     - POSTGRES_DB=finance_tracker
+  #   networks:
+  #     - finance_tracker
+  test-db:
     image: postgres:13
     restart: always
     ports:
       -  "5434:5432"
     environment:
+
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123 
       - POSTGRES_DB=finance_tracker
