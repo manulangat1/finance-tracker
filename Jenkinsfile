@@ -13,7 +13,7 @@ pipeline {
         stage("Clean orphaned docker repos") { 
             steps{ 
                 script{
-                    echo "docker system prune -a -f "
+                    sh "docker system prune -a -f "
                 }
             }
         }
@@ -33,7 +33,8 @@ pipeline {
         stage("Run image") { 
             steps{
                 script{ 
-                    sh "docker run -p 3000:3000 finance-api"
+                    // sh "docker run -p 3000:3000 finance-api"
+                    sh "docker system prune -a -f "
 
                 }
             }
