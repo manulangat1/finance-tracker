@@ -11,6 +11,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './common/guards/AuthGuard';
 import { CategoriesModule } from './categories/categories.module';
+import { ExpensesModule } from './expenses/expenses.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { CategoriesModule } from './categories/categories.module';
     LoggingCounterModule,
     LoggingModule,
     CategoriesModule,
+    ExpensesModule,
   ],
   controllers: [],
   providers: [

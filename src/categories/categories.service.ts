@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Category } from 'src/database/entities/Categories.entity';
 import { DataSource, EntityManager, Repository } from 'typeorm';
 import { CreateCategoryDTO } from './dto';
+import { createSubDTO } from './dto/subcategory.dto';
+import { SubCategory } from '../database/entities/SubCategory.entitity';
 
 @Injectable()
 export class CategoriesService {
@@ -10,6 +12,8 @@ export class CategoriesService {
   constructor(
     @InjectRepository(Category)
     private categoryRepository: Repository<Category>,
+    @InjectRepository(SubCategory)
+    private subCategoryRepo: Repository<SubCategory>,
     private entityManager: EntityManager,
     private dataSource: DataSource,
   ) {}
@@ -31,6 +35,15 @@ export class CategoriesService {
       order: {
         createdAt: 'DESC',
       },
+      relations: ['subCategories'],
+    });
+  }
+
+  async getByID(id: string) {
+    return await this.categoryRepository.findOne({
+      where: {
+        id: Number(id),
+      },
     });
   }
 
@@ -45,4 +58,22 @@ export class CategoriesService {
   }
 
   //   TODO : add methods for other types
+
+  async createSubCategory(dto: createSubDTO) {
+    const category = await this.getByID(dto.id);
+    const newSub = await this.subCategoryRepo.create({
+      title: dto.title,
+      category: category,
+    });
+    return await this.entityManager.save(newSub);
+  }
+  async deleteSubCategory(id: any) {
+    return await this.dataSource
+      .getRepository(SubCategory)
+      .createQueryBuilder()
+      .delete()
+      .from(SubCategory)
+      .where('id = :id', { id: id })
+      .execute();
+  }
 }

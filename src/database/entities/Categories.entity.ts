@@ -4,10 +4,12 @@ import {
   Entity,
   Generated,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { User } from './User.Entity';
+import { SubCategory } from './SubCategory.entitity';
 
 @Entity()
 export class Category {
@@ -28,4 +30,7 @@ export class Category {
 
   @ManyToOne(() => User, (user) => user.categories)
   user: User;
+
+  @OneToMany(() => SubCategory, (subCategory) => subCategory.category)
+  subCategories: Category[];
 }

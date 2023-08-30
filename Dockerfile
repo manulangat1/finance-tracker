@@ -10,7 +10,10 @@ WORKDIR /app
 RUN apk add --update python3 make g++\
     && rm -rf /var/cache/apk/*
 
-COPY --chown=node:node package*.json ./
+# COPY --chown=node:node package*.json ./
+COPY  package*.json ./ 
+
+COPY yarn.lock ./
 
 RUN yarn
 
