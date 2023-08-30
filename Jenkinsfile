@@ -14,7 +14,9 @@ pipeline {
             steps{ 
                 script{ 
                     echo "building the application!" 
-                    sh "docker-compose up"
+                    sh "pwd"
+                    // sh "docker-compose up"
+                    sh " docker build -t finance-api ."
                 }
             }
         }
