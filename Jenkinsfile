@@ -9,5 +9,14 @@ pipeline {
                 }
             }
         }
+
+        stage("Build the image") { 
+            steps{ 
+                script{ 
+                    echo "building the application!" 
+                    sh "docker-compose up"
+                }
+            }
+        }
     }
 }
