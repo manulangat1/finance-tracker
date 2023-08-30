@@ -10,6 +10,14 @@ pipeline {
             }
         }
 
+        stage("Clean orphaned docker repos") { 
+            steps{ 
+                script{
+                    echo "docker system prune -a -f "
+                }
+            }
+        }
+
         stage("Build the image") { 
             steps{ 
                 script{ 
