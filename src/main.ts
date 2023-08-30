@@ -18,6 +18,7 @@ async function bootstrap() {
       forbidUnknownValues: true,
     }),
   );
+  console.log(getPort, 'my port');
   await app.listen(getPort);
 }
 bootstrap();
