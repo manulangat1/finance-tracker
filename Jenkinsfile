@@ -23,8 +23,18 @@ pipeline {
                 script{ 
                     echo "building the application!" 
                     sh "pwd"
-                    sh "docker-compose -f docker-compose.yaml  up"
+                    sh "ls"
+                    // sh "docker-compose -f docker-compose.yaml  up"
                     sh " docker build -t finance-api ."
+                }
+            }
+        }
+
+        stage("Run image") { 
+            steps{
+                script{ 
+                    sh "docker run -p 3000:3000 finance-api -d "
+                    // sh "docker "
                 }
             }
         }
