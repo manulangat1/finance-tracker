@@ -33,7 +33,7 @@ pipeline {
         stage("Run image") { 
             steps{
                 script{ 
-                    sh "docker run -p 3000:3000 finance-api -d "
+                    sh "docker run -p 3000:3000 finance-api"
 
                 }
             }
