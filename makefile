@@ -6,3 +6,9 @@ prune:
 	docker system prune -a -f 
 logs:
 	docker compose logs -f
+init: 
+	terraform init 
+apply:
+	terraform apply --auto-apply 
+destroy: 
+	terraform destroy --auto-apply

@@ -6,6 +6,7 @@ pipeline {
             steps { 
                 script {
                     echo "Hello there, ${BRANCH_NAME}"
+                    sh "docker version"
                 }
             }
         }
@@ -36,6 +37,16 @@ pipeline {
                     // sh "docker run -p 3000:3000 finance-api"
                     sh "docker system prune -a -f "
 
+                }
+            }
+        }
+
+        stage ("Provinsion infra using terraform") {
+            steps{
+                script { 
+                    dir("terraform") {
+                        sh "ls"
+                    }
                 }
             }
         }
