@@ -57,8 +57,8 @@ pipeline {
                         echo "access_key"
                         echo "secret_key"
                         sh "terraform init --var secret_key=secret_key  --var access_key=access_key"
-                        sh "terraform apply --auto-approve --var secret_key=secret_key  --var access_key=access_key"
-                        sh "terraform destroy --auto-approve --var secret_key=secret_key  --var access_key=access_key"
+                        // sh "terraform apply --auto-approve --var secret_key=secret_key  --var access_key=access_key"
+                        // sh "terraform destroy --auto-approve --var secret_key=secret_key  --var access_key=access_key"
                     }
                 }
             }
