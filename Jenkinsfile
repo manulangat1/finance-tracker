@@ -42,10 +42,13 @@ pipeline {
         }
 
         stage ("Provinsion infra using terraform") {
-            
-            steps{
+            environment { 
                 access_key = credentials('access_key')
             secret_key = credentials('secret_key')
+            }
+            
+            steps{
+                
                 script { 
                     dir("terraform") {
                         sh "ls"
