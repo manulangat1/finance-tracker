@@ -54,7 +54,7 @@ pipeline {
             steps{
                 
                 script { 
-                    dir("terraform") {
+                    dir("terraform") {  
                         sh "ls"
                         echo "access_key"
                         echo "secret_key"
@@ -62,7 +62,8 @@ pipeline {
                         // withCredentials([])
                         echo "$AWS_ACCESS_KEY_ID"
                         echo "$AWS_SECRET_ACCESS_KEY"
-                        sh "terraform apply --auto-approve --var secret_key=AWS_SECRET_ACCESS_KEY  --var access_key=AWS_ACCESS_KEY_ID"
+                        sh "aws --version"
+                        // sh "terraform apply --auto-approve --var secret_key=AWS_SECRET_ACCESS_KEY  --var access_key=AWS_ACCESS_KEY_ID"
                         // sh "terraform destroy --auto-approve --var secret_key=secret_key  --var access_key=access_key"
                     }
                 }
