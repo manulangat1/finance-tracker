@@ -15,6 +15,8 @@ pipeline {
             steps{ 
                 script{
                     sh "docker system prune -a -f "
+                    sh "docker ps" 
+                    
                 }
             }
         }
