@@ -64,7 +64,7 @@ pipeline {
                         echo "$AWS_SECRET_ACCESS_KEY"
                         sh "aws --version"
                         withCredentials([aws(accessKeyVariable: "AWS_ACCESS_KEY_ID", credentialsId: "aws-creds", secretKeyVariable: "AWS_SECRET_ACCESS_KEY")]) { 
-                            sh "terraform apply --auto-approve --var secret_key=AWS_SECRET_ACCESS_KEY  --var access_key=AWS_ACCESS_KEY_ID"
+                            sh "terraform apply --auto-approve"
                         }
                         
                         // sh "terraform destroy --auto-approve --var secret_key=secret_key  --var access_key=access_key"
