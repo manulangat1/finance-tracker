@@ -39,8 +39,8 @@ pipeline {
 
                      withCredentials([aws(accessKeyVariable: "AWS_ACCESS_KEY_ID", credentialsId: "aws-creds", secretKeyVariable: "AWS_SECRET_ACCESS_KEY")]) { 
                         sh "aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 186837223139.dkr.ecr.eu-north-1.amazonaws.com"
-                        sh "docker tag finance-api:latest finance-api:latest public.ecr.aws/v7e4g1x6/finance-api:${BUILD_NUMBER}"
-                    sh "docker push finance-api:latest public.ecr.aws/v7e4g1x6/finance-api:${BUILD_NUMBER}"
+                        sh "docker tag finance-api  public.ecr.aws/v7e4g1x6/finance-api:${BUILD_NUMBER}"
+                    sh "docker push  public.ecr.aws/v7e4g1x6/finance-api:${BUILD_NUMBER}"
                         }
                     
                 }
