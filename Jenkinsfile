@@ -5,7 +5,7 @@ pipeline {
         stage("Init the application") {
             steps { 
                 script {
-                    echo "Hello there, ${BRANCH_NAME}"
+                    echo "Hello there, ${BRANCH_NAME} ${BUILD_NUMBER}"
                     sh "docker version"
                 }
             }
@@ -50,7 +50,6 @@ pipeline {
         stage("Run image") { 
             steps{
                 script{ 
-                    // sh "docker run -p 3000:3000 finance-api"
                     sh "docker system prune -a -f "
 
                 }
