@@ -67,7 +67,7 @@ pipeline {
                             // sh "terraform apply --auto-approve"
                             // sh "aws ec2 describe-instances"
 
-                            sh "terraform apply --auto-approve --var secret_key=secret_key  --var access_key=access_key"
+                            sh "terraform plan --auto-approve --var secret_key=secret_key  --var access_key=access_key"
                         }
                         
                         // sh "terraform destroy --auto-approve --var secret_key=secret_key  --var access_key=access_key"
