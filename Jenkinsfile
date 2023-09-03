@@ -39,8 +39,8 @@ pipeline {
 
                      withCredentials([aws(accessKeyVariable: "AWS_ACCESS_KEY_ID", credentialsId: "aws-creds", secretKeyVariable: "AWS_SECRET_ACCESS_KEY")]) { 
                         sh "aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 186837223139.dkr.ecr.eu-north-1.amazonaws.com"
-                        sh "docker tag finance-api:latest 186837223139.dkr.ecr.eu-north-1.amazonaws.com/finance-api:${BUILD_NUMBER}"
-                    sh "docker push 186837223139.dkr.ecr.eu-north-1.amazonaws.com/finance-api:${BUILD_NUMBER}"
+                        sh "docker tag finance-api:latest finance-api:latest public.ecr.aws/v7e4g1x6/finance-api:${BUILD_NUMBER}"
+                    sh "docker push finance-api:latest public.ecr.aws/v7e4g1x6/finance-api:${BUILD_NUMBER}"
                         }
                     
                 }
@@ -79,8 +79,9 @@ pipeline {
                         withCredentials([aws(accessKeyVariable: "AWS_ACCESS_KEY_ID", credentialsId: "aws-creds", secretKeyVariable: "AWS_SECRET_ACCESS_KEY")]) { 
                             // sh "terraform apply --auto-approve"
                             // sh "aws ec2 describe-instances"
+                            echo "Hello"
 
-                            sh "terraform apply --auto-approve --var secret_key=secret_key  --var access_key=access_key"
+                            // sh "terraform apply --auto-approve --var secret_key=secret_key  --var access_key=access_key"
                         }
                         
                         // sh "terraform destroy --auto-approve --var secret_key=secret_key  --var access_key=access_key"
