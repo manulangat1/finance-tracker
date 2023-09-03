@@ -33,6 +33,19 @@ pipeline {
             }
         }
 
+        stage ("push to ecr") {
+            steps { 
+                script { 
+
+                     withCredentials([aws(accessKeyVariable: "AWS_ACCESS_KEY_ID", credentialsId: "aws-creds", secretKeyVariable: "AWS_SECRET_ACCESS_KEY")]) { 
+                        sh "docker tag finance-api:latest 186837223139.dkr.ecr.eu-north-1.amazonaws.com/finance-api:latest"
+                    sh "docker push 186837223139.dkr.ecr.eu-north-1.amazonaws.com/finance-api:latest"
+                        }
+                    
+                }
+            }
+        }
+
         stage("Run image") { 
             steps{
                 script{ 
