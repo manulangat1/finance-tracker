@@ -31,16 +31,16 @@ resource "aws_vpc" "my_vpc" {
 
 }
 
-module "rds_db" {
+# module "rds_db" {
 
-  source = "./modules/rds"
+#   source = "./modules/rds"
 
-  secret_key = var.secret_key
+#   secret_key = var.secret_key
 
-  access_key = var.access_key
+#   access_key = var.access_key
 
-  vpc_id = aws_vpc.my_vpc.id
+#   vpc_id = aws_vpc.my_vpc.id
 
-}
+# }
 
 
