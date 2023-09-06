@@ -46,4 +46,8 @@ resource "aws_db_instance" "my_db" {
   username               = "root"
   password               = "root1010!"
 
+  # lifecycle {
+
+  # }
+
 }
