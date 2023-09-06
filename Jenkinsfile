@@ -77,6 +77,36 @@ pipeline {
                         echo "$AWS_SECRET_ACCESS_KEY"
                         sh "aws --version"
                         withCredentials([aws(accessKeyVariable: "AWS_ACCESS_KEY_ID", credentialsId: "aws-creds", secretKeyVariable: "AWS_SECRET_ACCESS_KEY")]) { 
+
+
+                            sh "terraform apply --auto-approve --var secret_key=secret_key  --var access_key=access_key"
+                        }
+                    }
+                }
+            }
+        }
+
+                stage ("Sast analysis") {
+            environment { 
+                access_key = credentials('access_key')
+            secret_key = credentials('secret_key')
+            AWS_ACCESS_KEY_ID = credentials('access_key')
+                AWS_SECRET_ACCESS_KEY = credentials('secret_key')
+            }
+            
+            steps{
+                
+                script { 
+                    dir("terraform") {  
+                        sh "ls"
+                        echo "access_key"
+                        echo "secret_key"
+                        sh "terraform init --var secret_key=secret_key  --var access_key=access_key"
+                        // withCredentials([])
+                        echo "$AWS_ACCESS_KEY_ID"
+                        echo "$AWS_SECRET_ACCESS_KEY"
+                        sh "aws --version"
+                        withCredentials([aws(accessKeyVariable: "AWS_ACCESS_KEY_ID", credentialsId: "aws-creds", secretKeyVariable: "AWS_SECRET_ACCESS_KEY")]) { 
                             // sh "terraform apply --auto-approve"
                             // sh "aws ec2 describe-instances"
                             // echo "Hello"
