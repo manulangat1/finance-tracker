@@ -32,12 +32,14 @@ module "rds_db" {
 
   source = "./modules/rds"
 
-  # secret_key = var.secret_key
-
-  # access_key = var.access_key
 
   vpc_id = aws_vpc.my_vpc.id
 
+}
+
+module "ec2" {
+
+  source = "./modules/ec2"
 }
 
 
