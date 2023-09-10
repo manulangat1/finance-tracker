@@ -72,16 +72,16 @@ resource "aws_security_group" "my-sg" {
   }
 }
 
-# resource "aws_key_pair" "my-key-pair" {
+resource "aws_key_pair" "my-key-pair" {
 
-#   key_name = "my-key"
+  key_name = "my-key"
 
-#   # public_key = file("~/.ssh/id_rsa.pub")
+  # public_key = file("~/.ssh/id_rsa.pub")
 
-#   public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file("/root/.ssh/id_rsa.pub")
 
 
-# }
+}
 
 
 resource "aws_instance" "my-instance" {
