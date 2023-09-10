@@ -79,7 +79,8 @@ pipeline {
                         withCredentials([aws(accessKeyVariable: "AWS_ACCESS_KEY_ID", credentialsId: "aws-creds", secretKeyVariable: "AWS_SECRET_ACCESS_KEY")]) { 
                             sh "terraform apply --auto-approve --var secret_key=secret_key  --var access_key=access_key"
                             EC2_PUBLIC_IP = sh (
-                                script: 'terraform output ip'
+                                script: 'terraform output ip', 
+                                returnStdout: true
                             ).trim()
                         }
                     }
