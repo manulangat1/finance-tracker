@@ -78,7 +78,7 @@ resource "aws_key_pair" "my-key-pair" {
 
   # public_key = file("~/.ssh/id_rsa.pub")
 
-  public_key = file("/root/.ssh/id_rsa.pub")
+  public_key = file("~/root/.ssh/id_rsa.pub")
 
 
 }
