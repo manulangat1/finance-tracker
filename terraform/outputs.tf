@@ -6,3 +6,7 @@ output "vpc_id" {
   value = aws_vpc.my_vpc.id
 
 }
+
+output "ip" {
+  value = module.ec2.aws_ec2_ip
+}
