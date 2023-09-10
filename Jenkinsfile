@@ -88,6 +88,17 @@ pipeline {
             }
         }
 
+            // stage("deploy the finance project ") {
+            //     steps { 
+            //         script{ 
+            //             echo "Deploying docker image to the created ec2 instance"
+            //             def shellCmd = "bash ./server-cmds.sh"
+            //             sh ""
+            //         }
+            //     } 
+
+            // }
+
                 stage ("Sast analysis") {
             environment { 
                 access_key = credentials('access_key')

@@ -72,6 +72,14 @@ resource "aws_security_group" "my-sg" {
   }
 }
 
+resource "aws_key_pair" "my-key-pair" {
+
+  key_name = "my-key"
+
+  public_key = file(".ssh/id_rsa.pub")
+
+}
+
 
 resource "aws_instance" "my-instance" {
 
@@ -84,6 +92,8 @@ resource "aws_instance" "my-instance" {
 
   # availability_zone = "us-east-1a"
   availability_zone = "us-west-1b"
+
+  key_name = aws_key_pair.my-key-pair.key_name
 
   associate_public_ip_address = true
 
