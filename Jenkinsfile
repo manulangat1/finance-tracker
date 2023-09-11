@@ -91,6 +91,7 @@ pipeline {
             stage("Start the app in ECS cluster ") {
                 steps { 
                     script{ 
+                        sleep(time:300, unit:'SECONDS')
                         echo "Deploying docker image to the created ec2 instance"
                         def shellCmd = "bash ./server-cmds.sh"
                         def ec2Instance = "ec2-user@$EC2_PUBLIC_IP"
