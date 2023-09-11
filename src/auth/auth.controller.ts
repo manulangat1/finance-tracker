@@ -17,7 +17,6 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Get('')
-//   @Public()
   async getAllUsers(): Promise<User[]> {
     return await this.authService.getUser();
   }

@@ -2,9 +2,13 @@ import {
   Column,
   Entity,
   Generated,
+  OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { LoginCounter } from './LoginCounter.entity';
+import { Category } from './Categories.entity';
 
 @Entity()
 export class User {
@@ -28,4 +32,10 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToOne(() => LoginCounter, (loginCounter) => loginCounter.user)
+  loginCounter: LoginCounter;
+
+  @OneToMany(() => Category, (category) => category.user)
+  categories: Category[];
 }

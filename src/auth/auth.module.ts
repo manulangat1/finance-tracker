@@ -6,6 +6,8 @@ import { User } from 'src/database/entities/User.Entity';
 import { JwtModule } from '@nestjs/jwt';
 import { AppConfigModule } from 'src/app-config/app-config.module';
 import { AppConfigService } from 'src/app-config/app-config.service';
+import { LoggingCounterModule } from 'src/logging-counter/logging-counter.module';
+// import { LoggingCounterService } from 'src/logging-counter/logging-counter.service';
 
 @Module({
   imports: [
@@ -16,9 +18,15 @@ import { AppConfigService } from 'src/app-config/app-config.service';
       secret: 'hi_there',
       signOptions: { expiresIn: '60h' },
     }),
-    // AppConfigModule,
+    LoggingCounterModule,
+    // forwardRef(() => LoggingCounterModule),
   ],
   controllers: [AuthController],
-  providers: [AuthService, AppConfigService],
+  providers: [
+    // forwardRef(() => LoggingCounterService),
+    AuthService,
+    AppConfigService,
+    // LoggingCounterService
+  ],
 })
 export class AuthModule {}

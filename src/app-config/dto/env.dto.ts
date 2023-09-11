@@ -12,4 +12,12 @@ export class EnvironmentDTO {
   @IsString()
   @IsNotEmpty()
   secretKey: string;
+
+  @IsString()
+  @IsNotEmpty()
+  maxLoggingTries: number;
+
+  @IsString()
+  @IsNotEmpty()
+  lockedOutPeriod: number;
 }
