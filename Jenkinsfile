@@ -93,7 +93,7 @@ pipeline {
                     script{ 
                         sleep(time:120, unit:'SECONDS')
                         echo "Deploying docker image to the created ec2 instance"
-                        def shellCmd = "bash ./server-cmds.sh"
+                        def shellCmd = "bash server-commands.sh"
                         def ec2Instance = "ec2-user@$EC2_PUBLIC_IP"
                         sshagent(["ec2-server-key"]) {
                             sh "scp -o StrictHostKeyChecking=no server-commands.sh $ec2Instance:/home/ec2-user"
