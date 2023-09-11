@@ -100,6 +100,10 @@ resource "aws_instance" "my-instance" {
 
   associate_public_ip_address = true
 
+  user_data = file("server-commands.sh")
+
+
+
   tags = {
     "Name" : "Dev-ec2"
   }
